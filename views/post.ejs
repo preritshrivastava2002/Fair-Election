@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+
+<h1><%=thisPost.title%></h1>
+  <p><%=thisPost.body%></p>
+  <% if (thisPost.image != '{}' ) { %>
+    <br>
+  <img src="data:thisPost/<%=thisPost.image.contentType%>;base64,<%=thisPost.image.data.toString('base64')%>" width="500" height="300">
+  <% } %>
+  <% if (typeof user != 'undefined' ) { %>
+    <br>
+  <div style="display:flex;">
+    <a href = '/update/<%=thisPost._id%>'> <button type="button" class="btn btn-primary">Update</button> </a>
+  <br>
+  <br>
+  <form action="/delete/<%=thisPost._id%>" method = 'post'>
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+  </div>
+  <% } %>
+  <br>
+  <div style="display:flex;">
+    <form action="/upVote/<%=thisPost._id%>" method = 'post'>
+      <button type = "submit" class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i><%= thisPost.upVote.length %></button>
+      <!-- <button type="submit" class="btn btn-danger">UpVote <%= thisPost.upVote.length %></button> -->
+    </form>
+    <form action="/downVote/<%=thisPost._id%>" method = 'post'>
+      <button type="submit" class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i><%= thisPost.downVote.length %></button>
+      <!-- <button type="submit" class="btn btn-danger">DownVote <%= thisPost.downVote.length %></button> -->
+    </form>
+  </div>
+
+<%- include("partials/footer") %>

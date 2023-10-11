@@ -1,0 +1,30 @@
+<%- include ("partials/header"); -%>
+
+<div class="starting">
+
+<h1 style="text-align: center;">MY POSTS</h1>
+<p style="text-align: center;">All the post composed by you will be shown here.</p>
+</div>
+
+<% userPost.forEach((post)=>{ %>
+        <h1><%= post.title %></h1>
+        <p>
+                <%= post.body %>
+                <% if (post.image != '{}' ) { %>
+                    <br>
+                    <img src="data:post/<%=post.image.contentType%>;base64,<%=post.image.data.toString('base64')%>" width="500" height="300">
+                <% } %>
+                <br>
+                <% if (typeof user != 'undefined' ) { %>
+                    <div style="display:flex;">
+                        <a href = '/update/<%=post._id%>'> <button type="button" class="btn btn-primary">Update</button> </a>
+                    <br>
+                    <form action="/delete/<%=id%>/<%=post._id%>" method = 'post'>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    </div>
+                <% } %>
+                <br>
+        </p>
+<% }) %>
+<%- include ("partials/footer"); -%>

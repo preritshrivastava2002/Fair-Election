@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fair Election</title>
+  <!-- <link rel="icon" type="image/gif/png" href="favicon.png"> -->
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <p class="navbar-brand">FairElection</p>
+      </div>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- 6 -->
+          <li id="home"><a href="\">HOME</a></li>
+          <li id="latest"><a href="\latest">ALL POSTS</a></li>
+          <% if(typeof user != 'undefined'){  %>
+            <li id="about"><a href="\report">REPORT</a></li>
+            <li id="about"><a href="\myReport\<%= user._id %> ">MY REPORTS</a></li>
+            <button class="button-special1"><a href="/"><%= user.name %></a></button>
+            <button class="button-special1"><a href="/logout">Logout</a></button>
+          <% }else { %>
+            <!-- <li class="nav-item">
+                <a class="nav-link"   href="formlogin">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"   href="formregister">Register</a>
+              </li> -->
+              <button class="button-special1"><a href="/formlogin">Login</a></button>
+						  <button class="button-special1"><a href="/formregister">Register</a></button>
+          <% } %>
+        </ul>
+    </div>
+  </nav>
+
+  <body>
+    <div class="container">

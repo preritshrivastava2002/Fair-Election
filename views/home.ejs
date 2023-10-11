@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+
+<div class="starting">
+
+  <h1>See the latest happenings here!</h1>
+
+  <p>All the reports posted have been listed down here. You can read any of the reports by clicking on read more.</p>
+
+  <h2>Some of the rules before you start:-</h2>
+
+  <ul>
+    <li>You need to login first to report the mishappening observed during election using text and images.</li>
+    <li>You need to provide name while reporting(Don't worry it will be only for our reference)</li>
+    <li>We have a very strong team and hence we can easily detect if the posted report is true or false. So refrain from posting anything false!</li>
+  </ul>
+
+
+  <% journal.forEach((post)=>{ %>
+    <h1><%= post.title %></h1>
+    <p>
+            <%= post.body.substring(0,100) + "..." %>
+            <a href="/reports/<%=post._id%>">READ MORE</a>
+    </p>
+<% }) %>
+
+<!-- } -->
+</div>
+
+<%- include("partials/footer") %>
